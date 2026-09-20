@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para mi Illary ♡</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Para Illary ♡</title><style>
+
 * {
     box-sizing: border-box;
 }
@@ -14,17 +14,18 @@ html {
 body {
     margin: 0;
     background: #000;
-    color: white;
-    font-family: Arial, sans-serif;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
 /* ESTRELLAS */
+
 .stars {
     position: fixed;
     inset: 0;
-    pointer-events: none;
     z-index: 0;
+    pointer-events: none;
 }
 
 .star {
@@ -33,183 +34,513 @@ body {
     height: 2px;
     background: white;
     border-radius: 50%;
-    animation: twinkle 3s infinite alternate;
+    opacity: .7;
+    animation: brillar 3s infinite alternate;
 }
 
-@keyframes twinkle {
+@keyframes brillar {
     from {
-        opacity: 0.2;
+        opacity: .15;
     }
+
     to {
         opacity: 1;
     }
 }
 
 /* CONTENIDO */
-.content {
+
+.contenido {
     position: relative;
     z-index: 1;
 }
 
 section {
     min-height: 100vh;
+    padding: 70px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px;
     text-align: center;
 }
 
 /* INICIO */
-h1 {
-    font-size: clamp(40px, 10vw, 80px);
+
+.inicio h1 {
+    font-size: clamp(45px, 12vw, 90px);
     margin: 0;
     letter-spacing: 3px;
 }
 
-.intro {
+.rosa {
     color: #ff7eb6;
-    font-size: 18px;
-    margin-top: 15px;
 }
 
-.scroll {
-    margin-top: 80px;
-    color: #aaa;
-    font-size: 14px;
+.subtitulo {
+    margin-top: 20px;
+    font-size: 19px;
+    color: #ddd;
+}
+
+.bajar {
+    margin-top: 90px;
+    color: #999;
+    animation: subirbajar 2s infinite;
+}
+
+@keyframes subirbajar {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+}
+
+/* TEXTOS */
+
+h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.texto {
+    max-width: 600px;
+    line-height: 1.8;
+    font-size: 17px;
+    color: #ddd;
 }
 
 /* FOTOS */
-.photo {
-    width: min(85vw, 350px);
-    margin: 80px auto;
-    border-radius: 18px;
+
+.foto-contenedor {
+    margin: 70px 0;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 1s ease;
+}
+
+.foto-contenedor.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.foto {
+    width: min(85vw, 360px);
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
     border: 2px solid white;
-    box-shadow: 0 0 25px rgba(255, 126, 182, 0.35);
+    box-shadow: 0 0 30px rgba(255,126,182,.35);
+    transition: .4s;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.photo:hover {
+.foto:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 35px rgba(255, 126, 182, 0.7);
+    box-shadow: 0 0 40px rgba(255,126,182,.7);
 }
 
-.photo-text {
+.descripcion {
+    max-width: 450px;
+    margin: 20px auto;
+    color: #bbb;
+    line-height: 1.6;
+}
+
+/* VENTANA */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.modal-contenido {
+    background: #080808;
+    border: 1px solid #ff7eb6;
+    border-radius: 20px;
     max-width: 500px;
-    color: #ddd;
-    line-height: 1.7;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(255,126,182,.25);
+}
+
+.cerrar {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+    color: #ff7eb6;
+}
+
+/* YOUTUBE */
+
+.youtube {
+    width: min(90vw, 700px);
+    aspect-ratio: 16/9;
+    border-radius: 15px;
+    border: 1px solid #ff7eb6;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.youtube iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 /* CARTA */
-.letter {
+
+.carta {
     max-width: 650px;
-    padding: 30px;
+    background: rgba(255,255,255,.03);
     border: 1px solid #ff7eb6;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    line-height: 1.8;
+    padding: 35px;
     text-align: left;
+    line-height: 1.8;
+    color: #ddd;
 }
 
 /* FINAL */
-.question {
-    font-size: clamp(28px, 7vw, 55px);
+
+.final {
+    min-height: 100vh;
+}
+
+.pregunta {
+    font-size: clamp(30px, 8vw, 60px);
     margin-bottom: 40px;
 }
 
-.buttons {
+.botones {
     display: flex;
     gap: 20px;
 }
 
 button {
-    padding: 14px 35px;
+    padding: 15px 35px;
     border-radius: 30px;
-    border: 1px solid white;
-    background: transparent;
-    color: white;
     font-size: 18px;
     cursor: pointer;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
 }
 
-.yes {
+.si {
     background: #ff7eb6;
     border-color: #ff7eb6;
-    color: black;
+    color: #000;
 }
 
 button:hover {
     transform: scale(1.08);
 }
-</style></head><body><div class="stars" id="stars"></div><div class="content"><section>
-    <h1>Para Illary ♡</h1>
-    <p class="intro">Hay algo que quiero mostrarte...</p>
-    <p class="scroll">↓ Baja ↓</p>
-</section><section>
-    <h2>Primero...</h2>
-    <p class="photo-text">
-        Hay muchas cosas que me recuerdan a vos.
-    </p>
-</section><section>
-    <h2> vos y yo ♡</h2><img class="photo"
-     src="1b255a5634d63da3ab9ac7287aac64df.jpg"
-     alt="Foto">
 
-<p class="photo-text">
-    Aquí después pondremos el texto que tú quieras.
-</p>
+/* CORAZONES */
 
-</section><section>
-    <h2>La carta</h2><div class="letter">
-    Aquí vamos a escribir tu carta para illary.
-
-    <br><br>
-
-    Puedes hacerla tan larga como quieras y después
-    la dejamos bonita para que aparezca poco a poco.
-</div>
-
-</section><section>
-    <p class="question">
-        Y para terminar...
-    </p><div class="buttons">
-    <button class="yes" onclick="yes()">Sí ♡</button>
-    <button onclick="no()">No</button>
-</div>
-
-</section></div><script>
-
-/* CREAR ESTRELLAS */
-const stars = document.getElementById("stars");
-
-for (let i = 0; i < 120; i++) {
-    const star = document.createElement("div");
-
-    star.className = "star";
-
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
-
-    star.style.animationDelay = Math.random() * 3 + "s";
-
-    stars.appendChild(star);
+.corazon {
+    position: fixed;
+    font-size: 25px;
+    animation: subir 3s linear forwards;
+    pointer-events: none;
+    z-index: 20;
 }
 
-/* BOTÓN SÍ */
-function yes() {
-    document.querySelector(".question").innerHTML =
+@keyframes subir {
+
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+
+}
+
+</style></head><body><div class="stars" id="stars"></div><div class="contenido"><!-- INICIO --><section class="inicio"><h1>Illary <span class="rosa">♡</span></h1><p class="subtitulo">
+Esto es para vos.
+</p><p class="bajar">
+↓ bajá ↓
+</p></section><!-- INTRODUCCIÓN --><section><h2>Antes de empezar...</h2><p class="texto">No sabía muy bien cómo hacer esto.
+
+Así que terminé haciendo una página entera para vos.
+
+Porque sí, probablemente era mucho más fácil escribirte un mensaje y listo,
+pero dónde estaría la gracia de hacer las cosas fáciles, ¿no?
+
+Espero que cuando llegues hasta el final entiendas por qué hice todo esto.
+
+</p></section><!-- FOTO 1 --><section><div class="foto-contenedor"><img class="foto"
+src="1b255a5634d63da3ab9ac7287aac64df.jpg"
+onclick="abrirModal(1)">
+
+<p class="descripcion">
+Hay cosas que capaz parecen pequeñas, pero que terminan significando un montón.
+</p></div></section><!-- FOTO 2 --><section><div class="foto-contenedor"><img class="foto"
+src="363b16f303895f756adc0fa99d9a0c75.jpg"
+onclick="abrirModal(2)">
+
+<p class="descripcion">
+Y esta es una de esas cosas que quería que estuvieran acá.
+</p></div></section><!-- FOTO 3 --><section><div class="foto-contenedor"><img class="foto"
+src="56d91b64396c600ec6c9efbe90b88a01.jpg"
+onclick="abrirModal(3)">
+
+<p class="descripcion">
+No todo tiene que tener una explicación.
+</p></div></section><!-- FOTO 4 --><section><div class="foto-contenedor"><img class="foto"
+src="60c705fb487bfca4e3aeb782b330ed18.jpg"
+onclick="abrirModal(4)">
+
+<p class="descripcion">
+A veces simplemente quería guardar este momento acá.
+</p></div></section><!-- FOTO 5 --><section><div class="foto-contenedor"><img class="foto"
+src="649d25c24161444ca82fa00f603ba63d.jpg"
+onclick="abrirModal(5)">
+
+<p class="descripcion">
+Porque hay recuerdos que merecen quedarse.
+</p></div></section><!-- FOTO 6 --><section><div class="foto-contenedor"><img class="foto"
+src="7147ea7aced17349de4901a43cf0abcc.jpg"
+onclick="abrirModal(6)">
+
+<p class="descripcion">
+Y quería compartirlos con vos.
+</p></div></section><!-- FOTO 7 --><section><div class="foto-contenedor"><img class="foto"
+src="9570201a38992657cedc0153880252b1.jpg"
+onclick="abrirModal(7)">
+
+<p class="descripcion">
+Un poquito de todo lo que me hizo pensar en vos.
+</p></div></section><!-- FOTO 8 --><section><div class="foto-contenedor"><img class="foto"
+src="ab9fcbdf353badab29ab01ae72440ccb.jpg"
+onclick="abrirModal(8)">
+
+<p class="descripcion">
+Porque sí, también hay belleza en las cosas más random.
+</p></div></section><!-- FOTO 9 --><section><div class="foto-contenedor"><img class="foto"
+src="ba2a72cebaf0f5fc12d508f6e92a17d8.jpg"
+onclick="abrirModal(9)">
+
+<p class="descripcion">
+Y esta tenía que estar.
+</p></div></section><!-- FOTO 10 --><section><div class="foto-contenedor"><img class="foto"
+src="c70a1645e29b5e7d9ddbd6d45f8f51c3.jpg"
+onclick="abrirModal(10)">
+
+<p class="descripcion">
+Una más, porque doce nunca parecen suficientes.
+</p></div></section><!-- FOTO 11 --><section><div class="foto-contenedor"><img class="foto"
+src="ed0ccaa49a0bc7ab68252d9bb19279c9.jpg"
+onclick="abrirModal(11)">
+
+<p class="descripcion">
+Llegando casi al final...
+</p></div></section><!-- FOTO 12 --><section><div class="foto-contenedor"><img class="foto"
+src="f622918f11a5c896288b2b385ab0b9f6.jpg"
+onclick="abrirModal(12)">
+
+<p class="descripcion">
+Y todavía falta lo más importante.
+</p></div></section><!-- YOUTUBE --><section><h2>Una canción para vos</h2><p class="texto">Hay una canción que quiero que escuches mientras seguís viendo esto.
+
+</p><div class="youtube"><iframe
+src="https://www.youtube.com/embed/PEGAR-LINK-AQUI"
+allowfullscreen>
+</iframe></div><p class="descripcion">
+Después ponemos acá la canción que elegí.
+</p></section><!-- CARTA --><section><h2>Y ahora sí...</h2><div class="carta"><p>
+Illary,
+</p><p>
+Acá va a ir la carta.
+</p><p>
+Quiero escribirte algo que sea realmente mío,
+sin copiar frases de ningún lado y sin intentar hacerlo perfecto.
+</p><p>
+Porque lo importante no es que quede perfecto.
+Es que sea para vos.
+</p><p>
+Te quiero muchísimo.
+</p><p>
+— Ismael ♡
+</p></div></section><!-- FINAL --><section class="final"><p class="pregunta">
+Tengo una última pregunta...
+</p><div class="botones"><button class="si" onclick="respuestaSi()">
+Sí ♡
+</button><button onclick="respuestaNo()">
+No
+</button></div></section></div><!-- MODAL --><div class="modal" id="modal"><div class="modal-contenido"><span class="cerrar" onclick="cerrarModal()">×</span>
+
+<h2 id="modalTitulo"></h2><p id="modalTexto"></p></div></div><script>
+
+/* ESTRELLAS */
+
+const estrellas = document.getElementById("stars");
+
+for(let i = 0; i < 150; i++){
+
+    const estrella = document.createElement("div");
+
+    estrella.className = "star";
+
+    estrella.style.left = Math.random() * 100 + "%";
+    estrella.style.top = Math.random() * 100 + "%";
+
+    estrella.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    estrellas.appendChild(estrella);
+}
+
+
+/* ANIMACIÓN DE FOTOS */
+
+const fotos = document.querySelectorAll(".foto-contenedor");
+
+const observador = new IntersectionObserver((entradas) => {
+
+    entradas.forEach(entrada => {
+
+        if(entrada.isIntersecting){
+
+            entrada.target.classList.add("visible");
+
+        }
+
+    });
+
+}, {
+    threshold: 0.2
+});
+
+fotos.forEach(foto => {
+
+    observador.observe(foto);
+
+});
+
+
+/* VENTANAS DE FOTOS */
+
+const textos = {
+
+1: "Hay cosas que parecen simples, pero cuando las mirás de otra manera terminan significando muchísimo.",
+
+2: "Quería que esta foto formara parte de esto porque me gusta la idea de guardar pequeños detalles.",
+
+3: "No hace falta que todo tenga una razón. Algunas cosas simplemente se sienten.",
+
+4: "Si llegaste hasta acá, ya sabés que esto no es una página cualquiera.",
+
+5: "Hay recuerdos que uno quiere guardar aunque pase el tiempo.",
+
+6: "Y este es uno de ellos.",
+
+7: "Capaz esta foto no dice demasiado por sí sola, pero para mí tiene su propio significado.",
+
+8: "Un pequeño detalle dentro de algo que hice pensando en vos.",
+
+9: "Otra parte de este pequeño regalo.",
+
+10: "Ya falta poquito. No te vayas todavía.",
+
+11: "Llegamos casi al final.",
+
+12: "Y ahora sí... viene la parte por la que hice toda esta página."
+};
+
+
+function abrirModal(numero){
+
+    document.getElementById("modalTitulo").innerText =
+        "Para vos ♡";
+
+    document.getElementById("modalTexto").innerText =
+        textos[numero];
+
+    document.getElementById("modal").style.display =
+        "flex";
+}
+
+
+function cerrarModal(){
+
+    document.getElementById("modal").style.display =
+        "none";
+}
+
+
+/* RESPUESTA SÍ */
+
+function respuestaSi(){
+
+    document.querySelector(".pregunta").innerHTML =
         "Entonces... ♡";
 
-    document.querySelector(".buttons").innerHTML =
-        "<p style='font-size:22px;color:#ff7eb6;'>Sabía que tenía que preguntártelo.</p>";
+    document.querySelector(".botones").innerHTML =
+        "<p style='color:#ff7eb6;font-size:22px;'>No sabés lo feliz que me hacés.</p>";
+
+    crearCorazones();
 }
 
-/* BOTÓN NO */
-function no() {
-    alert("Vale... pero piénsatelo otra vez 😭");
+
+/* RESPUESTA NO */
+
+function respuestaNo(){
+
+    document.querySelector(".pregunta").innerHTML =
+        "Bueno... 😭";
+
+}
+
+
+/* CORAZONES */
+
+function crearCorazones(){
+
+    for(let i = 0; i < 30; i++){
+
+        const corazon =
+            document.createElement("div");
+
+        corazon.className = "corazon";
+
+        corazon.innerHTML = "♡";
+
+        corazon.style.left =
+            Math.random() * 100 + "%";
+
+        corazon.style.bottom = "0";
+
+        corazon.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.body.appendChild(corazon);
+
+        setTimeout(() => {
+
+            corazon.remove();
+
+        }, 4000);
+
+    }
+
 }
 
 </script></body>
-</html>
+    </html>
