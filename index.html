@@ -1,10 +1,15 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Para Illary ♡</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Illary ♡</title>
 
+<style>
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -12,22 +17,20 @@ html {
 }
 
 body {
-    margin: 0;
     background: #000;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
-/* =========================
-   ESTRELLAS
-========================= */
+/* ESTRELLAS */
 
 .stars {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .star {
@@ -36,774 +39,926 @@ body {
     height: 2px;
     background: white;
     border-radius: 50%;
-    opacity: .7;
-    animation: brillar 3s infinite alternate;
+    opacity: .8;
+    animation: twinkle 3s infinite ease-in-out;
 }
 
-@keyframes brillar {
-
-    from {
-        opacity: .15;
-    }
-
-    to {
-        opacity: 1;
-    }
-
+@keyframes twinkle {
+    0%,100% { opacity: .2; transform: scale(.7); }
+    50% { opacity: 1; transform: scale(1.4); }
 }
 
+/* INTRO */
 
-/* =========================
-   CONTENIDO
-========================= */
-
-.contenido {
-    position: relative;
-    z-index: 1;
-}
-
-section {
+.intro {
     min-height: 100vh;
-    padding: 70px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 30px;
+    position: relative;
 }
 
-
-/* =========================
-   INICIO
-========================= */
-
-.inicio h1 {
-    font-size: clamp(45px, 12vw, 90px);
-    margin: 0;
-    letter-spacing: 3px;
+.intro h1 {
+    font-size: clamp(55px, 14vw, 110px);
+    letter-spacing: 4px;
+    animation: titleIn 2s ease forwards;
 }
 
-.rosa {
-    color: #ff7eb6;
-}
-
-.subtitulo {
-    margin-top: 20px;
-    font-size: 19px;
+.intro p {
+    margin-top: 18px;
+    font-size: 18px;
     color: #ddd;
+    opacity: 0;
+    animation: fadeUp 1.5s ease 1s forwards;
 }
 
-.bajar {
-    margin-top: 90px;
-    color: #999;
-    animation: subirbajar 2s infinite;
+.start {
+    margin-top: 40px;
+    padding: 14px 30px;
+    border: 1px solid #ff4f9a;
+    border-radius: 30px;
+    color: white;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+    opacity: 0;
+    animation: fadeUp 1.5s ease 1.5s forwards;
 }
 
-@keyframes subirbajar {
+.start:hover {
+    background: #ff4f9a;
+    box-shadow: 0 0 25px #ff4f9a;
+}
 
-    0%,100% {
+@keyframes titleIn {
+    from {
+        opacity: 0;
+        transform: scale(.7);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
         transform: translateY(0);
     }
-
-    50% {
-        transform: translateY(10px);
-    }
-
 }
 
+/* SECCIONES */
 
-/* =========================
-   TEXTOS
-========================= */
-
-h2 {
-    font-size: 35px;
-    margin-bottom: 20px;
+section {
+    min-height: 100vh;
+    padding: 100px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.texto {
-    max-width: 600px;
-    line-height: 1.8;
-    font-size: 17px;
-    color: #ddd;
+.content {
+    width: min(900px, 100%);
+    text-align: center;
 }
 
+/* PORTADA FOTO 12 */
 
-/* =========================
-   FOTOS
-========================= */
-
-.foto-contenedor {
-    margin: 70px 0;
-    opacity: 0;
-    transform: translateY(70px);
-    transition: 1s ease;
-}
-
-.foto-contenedor.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.foto {
-    width: min(85vw, 360px);
-    max-height: 500px;
+.cover-photo {
+    width: min(430px, 90vw);
+    height: 540px;
     object-fit: cover;
     border-radius: 20px;
-    border: 2px solid white;
-    box-shadow: 0 0 30px rgba(255,126,182,.35);
+    box-shadow: 0 0 50px rgba(255, 70, 150, .25);
+    animation: float 5s ease-in-out infinite;
+}
+
+.cover-title {
+    margin-top: 35px;
+    font-size: 22px;
+    color: #ff75ad;
+    letter-spacing: 2px;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+/* FOTOS */
+
+.photo-section {
+    min-height: 85vh;
+}
+
+.photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo {
+    width: min(390px, 88vw);
+    height: 470px;
+    object-fit: cover;
+    border-radius: 18px;
     cursor: pointer;
-    transition: .4s;
+    transition: .6s;
+    box-shadow: 0 15px 50px rgba(0,0,0,.7);
 }
 
-.foto:hover {
-    transform: scale(1.04) rotate(-1deg);
-    box-shadow: 0 0 40px rgba(255,126,182,.7);
+.photo:hover {
+    transform: scale(1.04) rotate(1deg);
+    box-shadow: 0 0 40px rgba(255, 70, 150, .35);
 }
 
-.descripcion {
-    max-width: 450px;
-    margin: 20px auto;
-    color: #bbb;
-    line-height: 1.6;
+.photo-label {
+    margin-top: 25px;
+    color: #aaa;
+    font-size: 14px;
+    letter-spacing: 2px;
 }
 
+.tap {
+    margin-top: 8px;
+    color: #ff5da2;
+    font-size: 13px;
+}
 
-/* =========================
-   VENTANA DE LAS FOTOS
-========================= */
+/* VARIACIONES */
+
+.photo-section:nth-of-type(3) .photo {
+    transform: rotate(2deg);
+}
+
+.photo-section:nth-of-type(4) .photo {
+    transform: rotate(-2deg);
+}
+
+.photo-section:nth-of-type(5) .photo {
+    transform: rotate(1deg);
+}
+
+.photo-section:nth-of-type(6) .photo {
+    transform: rotate(-1.5deg);
+}
+
+.photo-section:nth-of-type(7) .photo {
+    transform: rotate(2.5deg);
+}
+
+.photo-section:nth-of-type(8) .photo {
+    transform: rotate(-2deg);
+}
+
+.photo-section:nth-of-type(9) .photo {
+    transform: rotate(1deg);
+}
+
+.photo-section:nth-of-type(10) .photo {
+    transform: rotate(-1deg);
+}
+
+.photo-section:nth-of-type(11) .photo {
+    transform: rotate(2deg);
+}
+
+/* MODAL */
 
 .modal {
-    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,.88);
-    z-index: 10;
-    justify-content: center;
+    backdrop-filter: blur(8px);
+    display: none;
     align-items: center;
+    justify-content: center;
     padding: 25px;
+    z-index: 20;
 }
 
-.modal-contenido {
-    background: #080808;
-    border: 1px solid #ff7eb6;
-    border-radius: 20px;
-    max-width: 500px;
-    width: 100%;
-    padding: 30px;
-    box-shadow: 0 0 40px rgba(255,126,182,.25);
+.modal.active {
+    display: flex;
 }
 
-.cerrar {
-    float: right;
-    font-size: 28px;
-    cursor: pointer;
-    color: #ff7eb6;
+.modal-box {
+    width: min(600px, 95vw);
+    padding: 45px 30px;
+    border: 1px solid #ff4f9a;
+    border-radius: 22px;
+    text-align: center;
+    background: #050505;
+    box-shadow: 0 0 60px rgba(255,70,150,.25);
+    animation: modalIn .4s ease;
 }
 
+.modal-box p {
+    font-size: 21px;
+    line-height: 1.6;
+}
 
-/* =========================
-   YOUTUBE
-========================= */
-
-.youtube {
-    width: min(90vw, 700px);
-    aspect-ratio: 16 / 9;
-    border-radius: 15px;
-    border: 1px solid #ff7eb6;
-    overflow: hidden;
+.close {
     margin-top: 30px;
+    color: #ff5da2;
+    cursor: pointer;
 }
 
-.youtube iframe {
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* MÚSICA */
+
+.music {
+    text-align: center;
+}
+
+.music h2 {
+    font-size: 35px;
+    margin-bottom: 25px;
+}
+
+.music p {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.video {
+    width: min(800px, 95vw);
+    aspect-ratio: 16/9;
+    border: 1px solid #ff4f9a;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 0 45px rgba(255,70,150,.2);
+}
+
+.video iframe {
     width: 100%;
     height: 100%;
     border: 0;
 }
 
+/* CARTA */
 
-/* =========================
-   CARTA
-========================= */
-
-.carta {
-    max-width: 650px;
-    background: rgba(255,255,255,.03);
-    border: 1px solid #ff7eb6;
-    border-radius: 20px;
-    padding: 35px;
-    text-align: left;
-    line-height: 1.8;
-    color: #ddd;
+.letter-section {
+    align-items: flex-start;
 }
 
+.letter {
+    width: min(850px, 95vw);
+    padding: 45px 35px;
+    border: 1px solid rgba(255,79,154,.6);
+    border-radius: 20px;
+    background: rgba(5,5,5,.85);
+    box-shadow: 0 0 50px rgba(255,70,150,.1);
+}
 
-/* =========================
-   FINAL
-========================= */
+.letter h2 {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 40px;
+    color: #ff75ad;
+}
+
+.letter p {
+    color: #eee;
+    line-height: 1.9;
+    font-size: 17px;
+    margin-bottom: 22px;
+}
+
+.signature {
+    text-align: right;
+    color: #ff75ad !important;
+    font-size: 20px !important;
+    margin-top: 35px;
+}
+
+/* FINAL */
 
 .final {
     min-height: 100vh;
+    flex-direction: column;
+    text-align: center;
 }
 
-.pregunta {
-    font-size: clamp(30px, 8vw, 60px);
+.final-photo {
+    width: min(300px, 75vw);
+    height: 380px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 45px;
+    box-shadow: 0 0 50px rgba(255,70,150,.3);
+}
+
+.final h2 {
+    font-size: clamp(32px, 8vw, 60px);
     margin-bottom: 40px;
 }
 
-.botones {
+.buttons {
     display: flex;
     gap: 20px;
+    justify-content: center;
 }
 
-button {
-    padding: 15px 35px;
-    border-radius: 30px;
-    font-size: 18px;
-    cursor: pointer;
+.btn {
+    border: 1px solid #ff4f9a;
     background: transparent;
-    border: 1px solid white;
     color: white;
-    transition: .2s;
+    padding: 15px 32px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: .3s;
 }
 
-.si {
-    background: #ff7eb6;
-    border-color: #ff7eb6;
-    color: #000;
+.btn:hover {
+    background: #ff4f9a;
+    box-shadow: 0 0 30px #ff4f9a;
 }
 
-button:hover {
-    transform: scale(1.08);
-}
+/* MENSAJE FINAL */
 
-
-/* =========================
-   CORAZONES
-========================= */
-
-.corazon {
-    position: fixed;
+.final-message {
+    margin-top: 35px;
     font-size: 25px;
-    animation: subir 3s linear forwards;
+    color: #ff75ad;
+    min-height: 40px;
+}
+
+/* ESTRELLAS ROSAS */
+
+.pink-star {
+    position: fixed;
     pointer-events: none;
-    z-index: 20;
+    color: #ff5da2;
+    font-size: 22px;
+    z-index: 50;
+    animation: pinkStar 2s ease forwards;
 }
 
-@keyframes subir {
-
-    from {
-        transform: translateY(0);
+@keyframes pinkStar {
+    0% {
         opacity: 1;
+        transform: scale(.3) translateY(0) rotate(0deg);
     }
-
-    to {
-        transform: translateY(-100vh);
+    100% {
         opacity: 0;
+        transform: scale(1.5) translateY(-180px) rotate(180deg);
     }
-
 }
 
-</style></head><body><!-- ESTRELLAS --><div class="stars" id="stars"></div><div class="contenido"><!-- =========================
-     INICIO
-========================= --><section class="inicio"><h1>
-    Illary <span class="rosa">♡</span>
-</h1>
+/* ANIMACIÓN SCROLL */
 
-<p class="subtitulo">
-    Esto es para vos.
-</p>
+.reveal {
+    opacity: 0;
+    transform: translateY(70px);
+    transition: 1.2s ease;
+}
 
-<p class="bajar">
-    ↓ bajá ↓
-</p>
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-</section><!-- =========================
-     INTRODUCCIÓN
-========================= --><section><h2>
-    Antes de empezar...
-</h2>
+/* MÓVIL */
 
-<p class="texto">
+@media (max-width: 600px) {
 
-    No sabía muy bien cómo hacer esto.
+    section {
+        padding: 80px 15px;
+    }
 
-    Así que terminé haciendo una página entera para vos.
+    .photo {
+        height: 430px;
+    }
 
-    Porque sí, probablemente era mucho más fácil escribirte un mensaje
-    y listo, pero ¿dónde estaría la gracia de hacer las cosas fáciles?
+    .cover-photo {
+        height: 500px;
+    }
 
-    Espero que cuando llegues hasta el final entiendas por qué hice todo esto.
+    .letter {
+        padding: 30px 22px;
+    }
 
-</p>
+    .letter p {
+        font-size: 16px;
+        line-height: 1.8;
+    }
 
-</section><!-- =========================
-     FOTO 1
-========================= --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="1b255a5634d63da3ab9ac7287aac64df.jpg"
-    onclick="abrirModal(1)"
-    alt="Foto 1"
->
+    .buttons {
+        flex-direction: column;
+        width: 180px;
+    }
 
-<p class="descripcion">
-    Un pequeño detalle para vos ♡
-</p>
+    .btn {
+        width: 100%;
+    }
+}
+</style>
+</head>
 
-</div></section><!-- FOTO 2 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="363b16f303895f756adc0fa99d9a0c75.jpg"
-    onclick="abrirModal(2)"
-    alt="Foto 2"
->
+<body>
 
-<p class="descripcion">
-    Porque quería hacer algo lindo para vos.
-</p>
+<div class="stars" id="stars"></div>
 
-</div></section><!-- FOTO 3 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="56d91b64396c600ec6c9efbe90b88a01.jpg"
-    onclick="abrirModal(3)"
-    alt="Foto 3"
->
+<!-- INTRO -->
 
-<p class="descripcion">
-    Hay cosas que simplemente me hacen sonreír.
-</p>
+<section class="intro" id="inicio">
 
-</div></section><!-- FOTO 4 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="60c705fb487bfca4e3aeb782b330ed18.jpg"
-    onclick="abrirModal(4)"
-    alt="Foto 4"
->
+    <h1>Illary ♡</h1>
 
-<p class="descripcion">
-    Y esta tenía que estar acá.
-</p>
+    <p>Hice algo para vos.</p>
 
-</div></section><!-- FOTO 5 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="649d25c24161444ca82fa00f603ba63d.jpg"
-    onclick="abrirModal(5)"
-    alt="Foto 5"
->
+    <button class="start" onclick="document.getElementById('portada').scrollIntoView()">
+        Empezar
+    </button>
 
-<p class="descripcion">
-    Un poquito de cariño en forma de imagen.
-</p>
+</section>
 
-</div></section><!-- FOTO 6 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="7147ea7aced17349de4901a43cf0abcc.jpg"
-    onclick="abrirModal(6)"
-    alt="Foto 6"
->
 
-<p class="descripcion">
-    No hace falta mucho para pensar en alguien.
-</p>
+<!-- PORTADA: FOTO 12 -->
 
-</div></section><!-- FOTO 7 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="9570201a38992657cedc0153880252b1.jpg"
-    onclick="abrirModal(7)"
-    alt="Foto 7"
->
+<section id="portada">
 
-<p class="descripcion">
-    Solo quería que formaras parte de esto.
-</p>
+    <div class="content reveal">
 
-</div></section><!-- FOTO 8 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="ab9fcbdf353badab29ab01ae72440ccb.jpg"
-    onclick="abrirModal(8)"
-    alt="Foto 8"
->
+        <img
+        src="f622918f11a5c896288b2b385ab0b9f6.jpg"
+        class="cover-photo"
+        alt="Foto">
 
-<p class="descripcion">
-    Una cosa más que quería dejarte.
-</p>
+        <div class="cover-title">
+            Para vos, Illary.
+        </div>
 
-</div></section><!-- FOTO 9 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="ba2a72cebaf0f5fc12d508f6e92a17d8.jpg"
-    onclick="abrirModal(9)"
-    alt="Foto 9"
->
+    </div>
 
-<p class="descripcion">
-    Porque sí. Porque vos.
-</p>
+</section>
 
-</div></section><!-- FOTO 10 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="c70a1645e29b5e7d9ddbd6d45f8f51c3.jpg"
-    onclick="abrirModal(10)"
-    alt="Foto 10"
->
 
-<p class="descripcion">
-    Ya falta poquito...
-</p>
+<!-- FOTO 1 -->
 
-</div></section><!-- FOTO 11 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="ed0ccaa49a0bc7ab68252d9bb19279c9.jpg"
-    onclick="abrirModal(11)"
-    alt="Foto 11"
->
+<section class="photo-section">
 
-<p class="descripcion">
-    No te vayas todavía.
-</p>
+    <div class="photo-wrapper reveal">
 
-</div></section><!-- FOTO 12 --><section><div class="foto-contenedor"><img
-    class="foto"
-    src="f622918f11a5c896288b2b385ab0b9f6.jpg"
-    onclick="abrirModal(12)"
-    alt="Foto 12"
->
+        <img
+        src="1b255a5634d63da3ab9ac7287aac64df.jpg"
+        class="photo"
+        onclick="openModal('Había un lugar para vos, y terminaste quedándote más de lo que imaginaba.')">
 
-<p class="descripcion">
-    Y ahora viene lo importante. ♡
-</p>
+        <div class="photo-label">01</div>
+        <div class="tap">tocá la foto</div>
 
-</div></section><!-- =========================
-     CANCIÓN
-========================= --><section><h2>
-    Una canción para vos
-</h2>
+    </div>
 
-<p class="texto">
-    Hay una canción que quiero que escuches mientras seguís viendo esto.
-</p>
+</section>
 
-<div class="youtube">
 
-    <iframe
-        src="https://www.youtube.com/embed/dKVYuxTTmmA"
-        title="Una canción para Illary"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
+<!-- FOTO 2 -->
 
-</div>
+<section class="photo-section">
 
-<p class="descripcion">
-    Escuchala cuando llegues hasta acá ♡
-</p>
+    <div class="photo-wrapper reveal">
 
-</section><!-- =========================
-     CARTA
-========================= --><section><h2>
-    Y ahora sí...
-</h2>
+        <img
+        src="363b16f303895f756adc0fa99d9a0c75.jpg"
+        class="photo"
+        onclick="openModal('Por vos, capaz me hago bueno, capaz me hago malo. En esa estamos.')">
 
-<div class="carta">
+        <div class="photo-label">02</div>
+        <div class="tap">tocá la foto</div>
 
-    <p>
+    </div>
+
+</section>
+
+
+<!-- FOTO 3 -->
+
+<section class="photo-section">
+
+    <div class="photo-wrapper reveal">
+
+        <img
+        src="56d91b64396c600ec6c9efbe90b88a01.jpg"
+        class="photo"
+        onclick="openModal('Te hice reír tanto que hasta el enojo terminó desapareciendo.')">
+
+        <div class="photo-label">03</div>
+        <div class="tap">tocá la foto</div>
+
+    </div>
+
+</section>
+
+
+<!-- FOTO 4 -->
+
+<section class="photo-section">
+
+    <div class="photo-wrapper reveal">
+
+        <img
+        src="60c705fb487bfca4e3aeb782b330ed18.jpg"
+        class="photo"
+        onclick="openModal('Tal vez el tiempo sepa todo lo que siento cuando me hablás y me contás tu día.')">
+
+        <div class="photo-label">04</div>
+        <div class="tap">tocá la foto</div>
+
+    </div>
+
+</section>
+
+
+<!-- FOTO 5 -->
+
+<section class="photo-section">
+
+    <div class="photo-wrapper reveal">
+
+        <img
+        src="649d25c24161444ca82fa00f603ba63d.jpg"
+        class="photo"
+        onclick="openModal('Sin vos, todo se siente un poquito más oscuro.')">
+
+        <div class="photo-label">05</div>
+        <div class="tap">tocá la foto</div>
+
+    </div>
+
+</section>
+
+
+<!-- FOTO 6 -->
+
+<section class="photo-section">
+
+    <div class="photo-wrapper reveal">
+
+        <img
+        src="7147ea7aced17349de4901a43cf0abcc.jpg"
+        class="photo"
+        onclick="openModal('Dejate querer. A veces una noche oscura también necesita una luna.')">
+
+        <div class="photo-label">06</div>
+        <div class="tap">tocá la foto</div>
+
+    </div>
+
+</section>
+
+
+<!-- FOTO 7 -->
+
+<section class="photo-section">
+
+    <div class="photo-wrapper reveal">
+
+        <img
+        src="9570201a38992657cedc0153880252b1.jpg"
+        class="photo"
+        onclick="openModal('Cuando te encuentro, parece que el tiempo se olvida de seguir.')">
+
+        <div class="photo-label">07</div>
+        <div class="tap">tocá la foto</div>
+
+    </div>
+
+</section>
+
+
+<!-- FOTO 8 -->
+
+<section class="photo-section">
+
+    <div class="photo-wrapper reveal">
+
+        <img
+        src="ab9fcbdf353badab29ab01ae72440ccb.jpg"
+        class="photo"
+        onclick="openModal('Quiero quedarme cerca de vos y que el mundo se quede afuera.')">
+
+        <div class="photo-label">08</div>
+        <div class="tap">tocá la foto</div>
+
+    </div>
+
+</section>
+
+
+<!-- FOTO 9 -->
+
+<section class="photo-section">
+
+    <div class="photo-wrapper reveal">
+
+        <img
+        src="ba2a72cebaf0f5fc12d508f6e92a17d8.jpg"
+        class="photo"
+        onclick="openModal('Sos esa curita de amor cuando las cosas duelen un poquito más.')">
+
+        <div class="photo-label">09</div>
+        <div class="tap">tocá la foto</div>
+
+    </div>
+
+</section>
+
+
+<!-- FOTO 10 -->
+
+<section class="photo-section">
+
+    <div class="photo-wrapper reveal">
+
+        <img
+        src="c70a1645e29b5e7d9ddbd6d45f8f51c3.jpg"
+        class="photo"
+        onclick="openModal('I can only see your face, when I close my eyes.')">
+
+        <div class="photo-label">10</div>
+        <div class="tap">tocá la foto</div>
+
+    </div>
+
+</section>
+
+
+<!-- MÚSICA -->
+
+<section>
+
+    <div class="music reveal">
+
+        <h2>Ahora escuchá esto.</h2>
+
+        <p>Porque obviamente una página así necesitaba una canción.</p>
+
+        <div class="video">
+
+            <iframe
+            src="https://www.youtube.com/embed/dKVYuxTTmmA"
+            title="YouTube"
+            allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CARTA -->
+
+<section class="letter-section">
+
+    <div class="letter reveal">
+
+        <h2>Una carta</h2>
+
+        <p>
         Illary,
-    </p>
+        </p>
 
-    <p>
-        Si Illary no Ary ni 3ry, no sé en qué momento empezaste a llamarme la atención,
-        no sé en qué momento empecé a darme cuenta que eras mucho más que una cuenta de
-        Instagram con la que coincidía en grupos. Siempre me caíste bien, eso sí me acuerdo.
-    </p>
+        <p>
+        Si Illary no Ary ni 3ry, no sé en qué momento empezaste a llamarme la atención, no sé en qué momento empecé a darme cuenta que eras mucho más que una cuenta de Instagram con la que coincidía en grupos. Siempre me caíste bien, eso sí me acuerdo.
+        </p>
 
-    <p>
-        Pero qué importa de lo que me acuerde? Teniendo en cuenta que mi memoria es una mierda,
-        capaz no me acuerde ni de mandarte esto. Espero que no.
-    </p>
+        <p>
+        Pero qué importa de lo que me acuerde? Teniendo en cuenta que mi memoria es una mierda, capaz no me acuerde ni de mandarte esto. Espero que no.
+        </p>
 
-    <p>
-        Lo que realmente importa es de lo que nos acordaremos en el futuro.
-        ¿Nos acordaremos de que fue todo mal? Capaz nos acordamos de la linda relación que tuvimos,
-        o de cómo nunca llegamos a nada, de acabar bien, o mal. Eso es algo que nunca sabremos
-        hasta que pase, ¿no?
-    </p>
+        <p>
+        Lo que realmente importa es de lo que nos acordaremos en el futuro. ¿Nos acordaremos de que fue todo mal? Capaz nos acordamos de la linda relación que tuvimos, o de cómo nunca llegamos a nada, de acabar bien, o mal. Eso es algo que nunca sabremos hasta que pase, ¿no?
+        </p>
 
-    <p>
-        Pero esto no es para ponerme filosófico. Solo quería decirte lo mucho que te quiero.
-        Sí, ya sé que lo sabés. Si tal vez queda demasiado cliché decirlo en una carta.
-    </p>
+        <p>
+        Pero esto no es para ponerme filosófico. Solo quería decirte lo mucho que te quiero. Sí, ya sé que lo sabés. Si tal vez queda demasiado cliché decirlo en una carta.
+        </p>
 
-    <p>
-        Pero qué querés que haga si es verdad.
-        Conseguiste volver a hacer llamar mi atención después de 1 año sin sentir nada por nadie,
-        y será una boludez, pero yo te lo agradeceré eternamente.
-    </p>
+        <p>
+        Pero qué querés que haga si es verdad. Conseguiste volver a hacer llamar mi atención después de 1 año sin sentir nada por nadie, y será una boludez, pero yo te lo agradeceré eternamente.
+        </p>
 
-    <p>
-        Tampoco voy a decir nada que ya no sepas.
-        Me gustás, corte me gustás de verdad.
-        No quiero decirlo solo porque es lo que se dicen en estos casos.
-        Me gustás mucho, Illary.
-    </p>
+        <p>
+        Tampoco voy a decir nada que ya no sepas. Me gustás, corte me gustás de verdad. No quiero decirlo solo porque es lo que se dicen en estos casos. Me gustás mucho, Illary.
+        </p>
 
-    <p>
-        Me gusta cuando te hacés la dura, cuando me hablás de lo que te gusta,
-        cuando te enojás, cuando estás triste, cuando te ponés sentimental
-        (pocas veces por no decir ninguna).
-    </p>
+        <p>
+        Me gusta cuando te hacés la dura, cuando me hablás de lo que te gusta, cuando te enojás, cuando estás triste, cuando te ponés sentimental (pocas veces por no decir ninguna).
+        </p>
 
-    <p>
+        <p>
         Y no sé si yo te gusto igual, pero tampoco necesito saberlo porque esto no va a cambiar.
-    </p>
+        </p>
 
-    <p>
-        Y bueno, no me entra más porque aunque haya creado yo entera la web,
-        tampoco puedo hacerlo eterno JAJAJA.
-    </p>
+        <p>
+        Y bueno, no me entra más porque aunque haya creado yo entera la web, tampoco puedo hacerlo eterno JAJAJA.
+        </p>
 
-    <p>
-        Te amo, Illary.
-        <br>
-        Por siempre.
-    </p>
+        <p>
+        Te amo, Illary. Por siempre.
+        </p>
 
-    <p>
+        <p class="signature">
         — Ismael ♡
-    </p>
+        </p>
 
-</div>
+    </div>
 
-</section><!-- =========================
-     PREGUNTA FINAL
-========================= --><section class="final"><p class="pregunta">
-    Tengo una última pregunta...
-</p>
+</section>
 
-<div class="botones">
 
-    <button class="si" onclick="respuestaSi()">
-        Sí ♡
-    </button>
+<!-- FOTO 11 + PREGUNTA FINAL -->
 
-    <button onclick="respuestaNo()">
-        No
-    </button>
+<section class="final">
 
-</div>
+    <img
+    src="ed0ccaa49a0bc7ab68252d9bb19279c9.jpg"
+    class="final-photo reveal"
+    alt="Foto">
 
-</section></div><!-- =========================
-     VENTANA DE LAS FOTOS
-========================= --><div class="modal" id="modal"><div class="modal-contenido">
-
-    <span
-        class="cerrar"
-        onclick="cerrarModal()">
-        ×
-    </span>
-
-    <h2 id="modalTitulo">
-        Para vos ♡
+    <h2 class="reveal">
+        Tengo una última pregunta...
     </h2>
 
-    <p id="modalTexto"></p>
+    <div class="buttons reveal">
+
+        <button class="btn" onclick="yesAnswer()">
+            Sí ♡
+        </button>
+
+        <button class="btn" onclick="noAnswer()">
+            No
+        </button>
+
+    </div>
+
+    <div class="final-message" id="finalMessage"></div>
+
+</section>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal" onclick="closeModal()">
+
+    <div class="modal-box" onclick="event.stopPropagation()">
+
+        <p id="modalText"></p>
+
+        <div class="close" onclick="closeModal()">
+            cerrar
+        </div>
+
+    </div>
 
 </div>
 
-</div><script>
 
+<script>
 
-/* =========================
-   CREAR ESTRELLAS
-========================= */
+/* ESTRELLAS BLANCAS */
 
-const estrellas = document.getElementById("stars");
+const stars = document.getElementById("stars");
 
-for(let i = 0; i < 150; i++){
+for(let i = 0; i < 180; i++){
 
-    const estrella = document.createElement("div");
+    const star = document.createElement("div");
 
-    estrella.className = "star";
+    star.className = "star";
 
-    estrella.style.left =
-        Math.random() * 100 + "%";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
 
-    estrella.style.top =
-        Math.random() * 100 + "%";
+    const size = Math.random() * 2 + 1;
 
-    estrella.style.animationDelay =
-        Math.random() * 3 + "s";
+    star.style.width = size + "px";
+    star.style.height = size + "px";
 
-    estrellas.appendChild(estrella);
+    star.style.animationDelay = Math.random() * 4 + "s";
+
+    stars.appendChild(star);
 }
 
 
-/* =========================
-   ANIMACIÓN DE LAS FOTOS
-========================= */
+/* REVEAL AL BAJAR */
 
-const fotos =
-    document.querySelectorAll(".foto-contenedor");
+const reveals = document.querySelectorAll(".reveal");
 
-const observador =
-    new IntersectionObserver((entradas) => {
+const observer = new IntersectionObserver((entries) => {
 
-        entradas.forEach(entrada => {
+    entries.forEach(entry => {
 
-            if(entrada.isIntersecting){
+        if(entry.isIntersecting){
 
-                entrada.target.classList.add("visible");
+            entry.target.classList.add("show");
 
-            }
+        }
 
-        });
-
-    }, {
-        threshold: 0.2
     });
 
-
-fotos.forEach(foto => {
-
-    observador.observe(foto);
-
+}, {
+    threshold: .15
 });
 
-
-/* =========================
-   TEXTOS DE LAS FOTOS
-========================= */
-
-const textos = {
-
-    1:
-    "Un pequeño detalle dentro de algo que hice pensando en vos.",
-
-    2:
-    "Capaz es una boludez, pero quería que estuviera acá.",
-
-    3:
-    "Porque hay cosas lindas que simplemente dan ganas de compartir.",
-
-    4:
-    "Una más para este pequeño rincón que hice para vos.",
-
-    5:
-    "No necesitaba una razón demasiado complicada para ponerla acá.",
-
-    6:
-    "Solo quería dejarte otro detalle.",
-
-    7:
-    "Y seguimos, porque todavía falta un poquito.",
-
-    8:
-    "Una imagen más y un poquito más de cariño.",
-
-    9:
-    "Porque sí. No hace falta darle tantas vueltas.",
-
-    10:
-    "Ya casi llegamos al final.",
-
-    11:
-    "Aguantá un poquito más.",
-
-    12:
-    "Ahora sí. Llegaste a la parte importante."
-};
+reveals.forEach(element => observer.observe(element));
 
 
-/* =========================
-   ABRIR FOTO
-========================= */
+/* MODAL */
 
-function abrirModal(numero){
+function openModal(text){
 
-    document.getElementById("modalTitulo").innerText =
-        "Para vos ♡";
+    document.getElementById("modalText").textContent = text;
 
-    document.getElementById("modalTexto").innerText =
-        textos[numero];
+    document.getElementById("modal").classList.add("active");
 
-    document.getElementById("modal").style.display =
-        "flex";
 }
 
+function closeModal(){
 
-/* =========================
-   CERRAR FOTO
-========================= */
-
-function cerrarModal(){
-
-    document.getElementById("modal").style.display =
-        "none";
-}
-
-
-/* =========================
-   BOTÓN SÍ
-========================= */
-
-function respuestaSi(){
-
-    document.querySelector(".pregunta").innerHTML =
-        "Entonces... ♡";
-
-    document.querySelector(".botones").innerHTML =
-        "<p style='color:#ff7eb6;font-size:22px;'>No sabés lo feliz que me hacés.</p>";
-
-    crearCorazones();
-}
-
-
-/* =========================
-   BOTÓN NO
-========================= */
-
-function respuestaNo(){
-
-    document.querySelector(".pregunta").innerHTML =
-        "Bueno... 😭";
+    document.getElementById("modal").classList.remove("active");
 
 }
 
 
-/* =========================
-   CORAZONES
-========================= */
+/* RESPUESTA SÍ */
 
-function crearCorazones(){
+function yesAnswer(){
 
-    for(let i = 0; i < 35; i++){
+    const message = document.getElementById("finalMessage");
 
-        const corazon =
-            document.createElement("div");
+    message.textContent = "Gracias, novia. Te quiero mucho.";
 
-        corazon.className =
-            "corazon";
+    createPinkStars();
 
-        corazon.innerHTML =
-            "♡";
+}
 
-        corazon.style.left =
-            Math.random() * 100 + "%";
 
-        corazon.style.bottom =
-            "0";
+/* RESPUESTA NO */
 
-        corazon.style.animationDelay =
-            Math.random() * 2 + "s";
+function noAnswer(){
 
-        document.body.appendChild(corazon);
+    const message = document.getElementById("finalMessage");
+
+    message.textContent = "Uuuhh mal ahí wacho, ánimos ";
+
+}
+
+
+/* ESTRELLAS ROSAS */
+
+function createPinkStars(){
+
+    for(let i = 0; i < 45; i++){
+
+        const star = document.createElement("div");
+
+        star.className = "pink-star";
+
+        star.textContent = "★";
+
+        star.style.left = (Math.random() * 100) + "vw";
+        star.style.top = (55 + Math.random() * 35) + "vh";
+
+        star.style.animationDelay = (Math.random() * .8) + "s";
+
+        document.body.appendChild(star);
 
         setTimeout(() => {
 
-            corazon.remove();
+            star.remove();
 
-        }, 4000);
+        }, 2500);
 
     }
 
 }
 
-</script></body>
+</script>
+
+</body>
     </html>
