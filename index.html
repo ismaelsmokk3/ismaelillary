@@ -35,8 +35,6 @@ body {
 
 .star {
     position: absolute;
-    width: 2px;
-    height: 2px;
     background: white;
     border-radius: 50%;
     opacity: .8;
@@ -44,8 +42,15 @@ body {
 }
 
 @keyframes twinkle {
-    0%,100% { opacity: .2; transform: scale(.7); }
-    50% { opacity: 1; transform: scale(1.4); }
+    0%,100% {
+        opacity: .2;
+        transform: scale(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
 }
 
 /* INTRO */
@@ -58,7 +63,6 @@ body {
     align-items: center;
     text-align: center;
     padding: 30px;
-    position: relative;
 }
 
 .intro h1 {
@@ -100,6 +104,7 @@ body {
         transform: scale(.7);
         filter: blur(10px);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -112,6 +117,7 @@ body {
         opacity: 0;
         transform: translateY(25px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -133,7 +139,7 @@ section {
     text-align: center;
 }
 
-/* PORTADA FOTO 12 */
+/* PORTADA */
 
 .cover-photo {
     width: min(430px, 90vw);
@@ -152,14 +158,19 @@ section {
 }
 
 @keyframes float {
-    0%,100% { transform: translateY(0) rotate(-1deg); }
-    50% { transform: translateY(-15px) rotate(1deg); }
+    0%,100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(1deg);
+    }
 }
 
 /* FOTOS */
 
 .photo-section {
-    min-height: 85vh;
+    min-height: 90vh;
 }
 
 .photo-wrapper {
@@ -196,7 +207,7 @@ section {
     font-size: 13px;
 }
 
-/* VARIACIONES */
+/* ROTACIONES */
 
 .photo-section:nth-of-type(3) .photo {
     transform: rotate(2deg);
@@ -264,7 +275,7 @@ section {
 }
 
 .modal-box p {
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.6;
 }
 
@@ -279,6 +290,7 @@ section {
         opacity: 0;
         transform: scale(.85);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -396,8 +408,6 @@ section {
     box-shadow: 0 0 30px #ff4f9a;
 }
 
-/* MENSAJE FINAL */
-
 .final-message {
     margin-top: 35px;
     font-size: 25px;
@@ -421,13 +431,14 @@ section {
         opacity: 1;
         transform: scale(.3) translateY(0) rotate(0deg);
     }
+
     100% {
         opacity: 0;
         transform: scale(1.5) translateY(-180px) rotate(180deg);
     }
 }
 
-/* ANIMACIÓN SCROLL */
+/* APARICIÓN AL HACER SCROLL */
 
 .reveal {
     opacity: 0;
@@ -481,22 +492,24 @@ section {
 
 <div class="stars" id="stars"></div>
 
+
 <!-- INTRO -->
 
-<section class="intro" id="inicio">
+<section class="intro">
 
     <h1>Illary ♡</h1>
 
     <p>Hice algo para vos.</p>
 
-    <button class="start" onclick="document.getElementById('portada').scrollIntoView()">
+    <button class="start"
+    onclick="document.getElementById('portada').scrollIntoView()">
         Empezar
     </button>
 
 </section>
 
 
-<!-- PORTADA: FOTO 12 -->
+<!-- FOTO 12: PORTADA -->
 
 <section id="portada">
 
@@ -525,7 +538,7 @@ section {
         <img
         src="1b255a5634d63da3ab9ac7287aac64df.jpg"
         class="photo"
-        onclick="openModal('"habia un lugar en tu cama y me volví un okupa,sol en la ventana y hiciste de lupa,no se de quién es la culpa"  .')">
+        onclick="openModal(`habia un lugar en tu cama y me volví un okupa,sol en la ventana y hiciste de lupa,no se de quién es la culpa`)">
 
         <div class="photo-label">01</div>
         <div class="tap">tocá la foto</div>
@@ -544,7 +557,7 @@ section {
         <img
         src="363b16f303895f756adc0fa99d9a0c75.jpg"
         class="photo"
-        onclick="openModal('mamichula,por vos me hago bueno me hago malo,por vos pierdo por vos gano,mami en esa estamos')">
+        onclick="openModal(`mamichula,por vos me hago bueno me hago malo,por vos pierdo por vos gano,mami en esa estamos`)">
 
         <div class="photo-label">02</div>
         <div class="tap">tocá la foto</div>
@@ -563,7 +576,7 @@ section {
         <img
         src="56d91b64396c600ec6c9efbe90b88a01.jpg"
         class="photo"
-        onclick="openModal('Te hice reír tanto para matar el enojo.')">
+        onclick="openModal(`te hice reír tanto para matar el enojo`)">
 
         <div class="photo-label">03</div>
         <div class="tap">tocá la foto</div>
@@ -582,7 +595,7 @@ section {
         <img
         src="60c705fb487bfca4e3aeb782b330ed18.jpg"
         class="photo"
-        onclick="openModal('Tal vez el tiempo sepa todo lo que siento cuando me hablás y me contás tu día.')">
+        onclick="openModal(`tal vez el tiempo,sepa que siento,cuando me hablas,y me contás tu día-cuando se lleno la luna,vi tu rostro en una estrella`)">
 
         <div class="photo-label">04</div>
         <div class="tap">tocá la foto</div>
@@ -601,7 +614,7 @@ section {
         <img
         src="649d25c24161444ca82fa00f603ba63d.jpg"
         class="photo"
-        onclick="openModal('Sin vos, todo se siente un poquito más oscuro.')">
+        onclick="openModal(`sin vos ya no hay luz sos mi eclipse solar`)">
 
         <div class="photo-label">05</div>
         <div class="tap">tocá la foto</div>
@@ -620,7 +633,7 @@ section {
         <img
         src="7147ea7aced17349de4901a43cf0abcc.jpg"
         class="photo"
-        onclick="openModal('Dejate querer. A veces una noche oscura también necesita una luna.')">
+        onclick="openModal(`y esperando por ver si saliera la luna,déjate querer,dímelo otra vez,un día con una noche oscura,si te vas,me quedo en esta calle sin salida`)">
 
         <div class="photo-label">06</div>
         <div class="tap">tocá la foto</div>
@@ -639,7 +652,7 @@ section {
         <img
         src="9570201a38992657cedc0153880252b1.jpg"
         class="photo"
-        onclick="openModal('Cuando te encuentro, parece que el tiempo se olvida de seguir.')">
+        onclick="openModal(`se apaga el sol cuando te encuentro en el amanecer,justo cuando el tiempo empieza a desaparecer,mami aunque lo intentes no nos van a ver caer,todo Extremadura sabe que te vengo a ver`)">
 
         <div class="photo-label">07</div>
         <div class="tap">tocá la foto</div>
@@ -658,7 +671,7 @@ section {
         <img
         src="ab9fcbdf353badab29ab01ae72440ccb.jpg"
         class="photo"
-        onclick="openModal('Quiero quedarme cerca de vos y que el mundo se quede afuera.')">
+        onclick="openModal(`no voy a compartirla con nadie,puta saltame que me quedo solo y no quiero quedarme sin aire,quiero quedarme sin nadie,con tu culo encima de mi carne ¿Cuanto loco como yo? A cuánta les encanta mi flow? ¿Cuánta como vos?`)">
 
         <div class="photo-label">08</div>
         <div class="tap">tocá la foto</div>
@@ -677,7 +690,7 @@ section {
         <img
         src="ba2a72cebaf0f5fc12d508f6e92a17d8.jpg"
         class="photo"
-        onclick="openModal('Sos esa curita de amor cuando las cosas duelen un poquito más.')">
+        onclick="openModal(`porque no puedo vivir,mucho menos si es sin ti,sos esa curita de amor si la herida me sangra,si te cuesta ser feliz,solamente ven a mí`)">
 
         <div class="photo-label">09</div>
         <div class="tap">tocá la foto</div>
@@ -696,7 +709,7 @@ section {
         <img
         src="c70a1645e29b5e7d9ddbd6d45f8f51c3.jpg"
         class="photo"
-        onclick="openModal('I can only see your face, when I close my eyes.')">
+        onclick="openModal(`i can only see your face,when i close my eyes`)">
 
         <div class="photo-label">10</div>
         <div class="tap">tocá la foto</div>
@@ -721,6 +734,7 @@ section {
             <iframe
             src="https://www.youtube.com/embed/dKVYuxTTmmA"
             title="YouTube"
+            allow="autoplay; encrypted-media"
             allowfullscreen>
             </iframe>
 
@@ -740,47 +754,27 @@ section {
         <h2>Una carta</h2>
 
         <p>
-        Illary,
+        illary,si illary no ary ni 3ry,no se en que momento empezaste a llamarme la atención,no sé en qué momento empecé a darme cuenta que eras mucho más que una cuenta de Instagram con la que coincidía en grupos,siempre me caíste bien,eso sí me acuerdo.
         </p>
 
         <p>
-        Si Illary no Ary ni 3ry, no sé en qué momento empezaste a llamarme la atención, no sé en qué momento empecé a darme cuenta que eras mucho más que una cuenta de Instagram con la que coincidía en grupos. Siempre me caíste bien, eso sí me acuerdo.
+        Pero que importa de lo que me acuerde?Teniendo en cuenta que mi memoria es una mirada capaz no me acuerde ni de mandarte esto,espero que no,lo que realmente importa es de lo que nos acordaremos en el futuro,nos acordaremos de que fue todo mal?capaz nos acordamos de la linda relación que tuvimos,o de como nunca llegamos a nada,de acabar bien,o mal,eso es algo que nunca sabremos hasta que pase,no?
         </p>
 
         <p>
-        Pero qué importa de lo que me acuerde? Teniendo en cuenta que mi memoria es una mierda, capaz no me acuerde ni de mandarte esto. Espero que no.
+        Pero esto no es para ponerme filosófico,solo quería decirte lo mucho que te quiero,si ya se que lo sabes,si tal vez queda demasiado cliché decirlo en una carta.
         </p>
 
         <p>
-        Lo que realmente importa es de lo que nos acordaremos en el futuro. ¿Nos acordaremos de que fue todo mal? Capaz nos acordamos de la linda relación que tuvimos, o de cómo nunca llegamos a nada, de acabar bien, o mal. Eso es algo que nunca sabremos hasta que pase, ¿no?
+        Pero que querés que haga si es verdad,conseguiste volver a hacer llamad mi atención después de 1 año sin sentir nada por nadie,y será una boludez pero yo te lo agradeceré eternamente.
         </p>
 
         <p>
-        Pero esto no es para ponerme filosófico. Solo quería decirte lo mucho que te quiero. Sí, ya sé que lo sabés. Si tal vez queda demasiado cliché decirlo en una carta.
+        Tampoco voy a decir nada que ya no sepas,me gustas,corte me gustas de verdad,no quiero decirlo solo por que es lo que se dicen en estos casos,me gustas mucho illary,me gusta cuando te haces la dura,cuando me hablas de lo que te gusta,cuando te enojas,cuando estas triste,cuando te pones sentimental(pocas veces por no decir ninguna)- y no se si yo te gusto igual,pero tampoco necesito saberlo pq esto no va a cambiar,y bueno no me entra más pq aunque haya creado yo entera la web tampoco puedo hacerlo eterno jajjajaja.
         </p>
 
         <p>
-        Pero qué querés que haga si es verdad. Conseguiste volver a hacer llamar mi atención después de 1 año sin sentir nada por nadie, y será una boludez, pero yo te lo agradeceré eternamente.
-        </p>
-
-        <p>
-        Tampoco voy a decir nada que ya no sepas. Me gustás, corte me gustás de verdad. No quiero decirlo solo porque es lo que se dicen en estos casos. Me gustás mucho, Illary.
-        </p>
-
-        <p>
-        Me gusta cuando te hacés la dura, cuando me hablás de lo que te gusta, cuando te enojás, cuando estás triste, cuando te ponés sentimental (pocas veces por no decir ninguna).
-        </p>
-
-        <p>
-        Y no sé si yo te gusto igual, pero tampoco necesito saberlo porque esto no va a cambiar.
-        </p>
-
-        <p>
-        Y bueno, no me entra más porque aunque haya creado yo entera la web, tampoco puedo hacerlo eterno JAJAJA.
-        </p>
-
-        <p>
-        Te amo, Illary. Por siempre.
+        te amo illary,por siempre.
         </p>
 
         <p class="signature">
@@ -792,7 +786,7 @@ section {
 </section>
 
 
-<!-- FOTO 11 + PREGUNTA FINAL -->
+<!-- FOTO 11: FINAL -->
 
 <section class="final">
 
@@ -824,9 +818,9 @@ section {
 
 <!-- MODAL -->
 
-<div class="modal" id="modal" onclick="closeModal()">
+<div class="modal" id="modal">
 
-    <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-box">
 
         <p id="modalText"></p>
 
@@ -841,7 +835,7 @@ section {
 
 <script>
 
-/* ESTRELLAS BLANCAS */
+/* CREAR ESTRELLAS */
 
 const stars = document.getElementById("stars");
 
@@ -865,7 +859,7 @@ for(let i = 0; i < 180; i++){
 }
 
 
-/* REVEAL AL BAJAR */
+/* APARECER AL HACER SCROLL */
 
 const reveals = document.querySelectorAll(".reveal");
 
@@ -874,9 +868,7 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
 
         if(entry.isIntersecting){
-
             entry.target.classList.add("show");
-
         }
 
     });
@@ -888,7 +880,7 @@ const observer = new IntersectionObserver((entries) => {
 reveals.forEach(element => observer.observe(element));
 
 
-/* MODAL */
+/* ABRIR FRASE */
 
 function openModal(text){
 
@@ -897,6 +889,9 @@ function openModal(text){
     document.getElementById("modal").classList.add("active");
 
 }
+
+
+/* CERRAR FRASE */
 
 function closeModal(){
 
@@ -911,7 +906,7 @@ function yesAnswer(){
 
     const message = document.getElementById("finalMessage");
 
-    message.textContent = "Gracias, novia. Te quiero mucho.";
+    message.textContent = "gracias novia,te quiero mucho.";
 
     createPinkStars();
 
@@ -924,7 +919,7 @@ function noAnswer(){
 
     const message = document.getElementById("finalMessage");
 
-    message.textContent = "Uuuhh mal ahí wacho, ánimos ";
+    message.textContent = "uuuhh mal ahí wacho,ánimos";
 
 }
 
@@ -933,7 +928,7 @@ function noAnswer(){
 
 function createPinkStars(){
 
-    for(let i = 0; i < 45; i++){
+    for(let i = 0; i < 55; i++){
 
         const star = document.createElement("div");
 
@@ -941,17 +936,15 @@ function createPinkStars(){
 
         star.textContent = "★";
 
-        star.style.left = (Math.random() * 100) + "vw";
+        star.style.left = Math.random() * 100 + "vw";
         star.style.top = (55 + Math.random() * 35) + "vh";
 
-        star.style.animationDelay = (Math.random() * .8) + "s";
+        star.style.animationDelay = Math.random() * .8 + "s";
 
         document.body.appendChild(star);
 
         setTimeout(() => {
-
             star.remove();
-
         }, 2500);
 
     }
