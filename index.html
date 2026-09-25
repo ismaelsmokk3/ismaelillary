@@ -23,7 +23,120 @@ body {
     overflow-x: hidden;
 }
 
-/* ESTRELLAS */
+/* =========================
+   PANTALLA DE DESBLOQUEO
+========================= */
+
+#lockScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: white;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    transition: opacity 1.3s ease, visibility 1.3s ease;
+}
+
+#lockScreen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.lockBox {
+    width: min(420px, 90vw);
+    animation: lockAppear 1.2s ease;
+}
+
+.lockStar {
+    color: #ff4f9a;
+    font-size: 50px;
+    margin-bottom: 25px;
+    animation: lockStarFloat 3s ease-in-out infinite;
+}
+
+.lockBox h1 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.lockBox p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+#passwordInput {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+    text-align: center;
+    font-size: 17px;
+}
+
+#passwordInput:focus {
+    border-bottom: 1px solid #ff4f9a;
+}
+
+.lockButton {
+    margin-top: 25px;
+    padding: 13px 30px;
+    border: 1px solid #ff4f9a;
+    border-radius: 30px;
+    background: transparent;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.lockButton:hover {
+    background: #ff4f9a;
+    color: white;
+    box-shadow: 0 0 25px rgba(255,79,154,.4);
+}
+
+#errorMessage {
+    margin-top: 20px;
+    min-height: 20px;
+    color: #ff4f9a;
+    font-size: 14px;
+}
+
+@keyframes lockAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lockStarFloat {
+    0%,100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(10deg);
+    }
+}
+
+
+/* =========================
+   ESTRELLAS
+========================= */
 
 .stars {
     position: fixed;
@@ -53,7 +166,10 @@ body {
     }
 }
 
-/* INTRO */
+
+/* =========================
+   INTRO
+========================= */
 
 .intro {
     min-height: 100vh;
@@ -124,7 +240,10 @@ body {
     }
 }
 
-/* SECCIONES */
+
+/* =========================
+   SECCIONES
+========================= */
 
 section {
     min-height: 100vh;
@@ -139,14 +258,17 @@ section {
     text-align: center;
 }
 
-/* PORTADA */
+
+/* =========================
+   PORTADA FOTO 12
+========================= */
 
 .cover-photo {
     width: min(430px, 90vw);
     height: 540px;
     object-fit: cover;
     border-radius: 20px;
-    box-shadow: 0 0 50px rgba(255, 70, 150, .25);
+    box-shadow: 0 0 50px rgba(255,70,150,.25);
     animation: float 5s ease-in-out infinite;
 }
 
@@ -167,7 +289,10 @@ section {
     }
 }
 
-/* FOTOS */
+
+/* =========================
+   FOTOS
+========================= */
 
 .photo-section {
     min-height: 90vh;
@@ -191,7 +316,7 @@ section {
 
 .photo:hover {
     transform: scale(1.04) rotate(1deg);
-    box-shadow: 0 0 40px rgba(255, 70, 150, .35);
+    box-shadow: 0 0 40px rgba(255,70,150,.35);
 }
 
 .photo-label {
@@ -207,7 +332,10 @@ section {
     font-size: 13px;
 }
 
-/* ROTACIONES */
+
+/* =========================
+   ROTACIONES
+========================= */
 
 .photo-section:nth-of-type(3) .photo {
     transform: rotate(2deg);
@@ -245,7 +373,10 @@ section {
     transform: rotate(2deg);
 }
 
-/* MODAL */
+
+/* =========================
+   MODAL
+========================= */
 
 .modal {
     position: fixed;
@@ -264,7 +395,7 @@ section {
 }
 
 .modal-box {
-    width: min(600px, 95vw);
+    width: min(600px,95vw);
     padding: 45px 30px;
     border: 1px solid #ff4f9a;
     border-radius: 22px;
@@ -297,7 +428,10 @@ section {
     }
 }
 
-/* MÚSICA */
+
+/* =========================
+   MÚSICA
+========================= */
 
 .music {
     text-align: center;
@@ -314,7 +448,7 @@ section {
 }
 
 .video {
-    width: min(800px, 95vw);
+    width: min(800px,95vw);
     aspect-ratio: 16/9;
     border: 1px solid #ff4f9a;
     border-radius: 18px;
@@ -328,14 +462,17 @@ section {
     border: 0;
 }
 
-/* CARTA */
+
+/* =========================
+   CARTA
+========================= */
 
 .letter-section {
     align-items: flex-start;
 }
 
 .letter {
-    width: min(850px, 95vw);
+    width: min(850px,95vw);
     padding: 45px 35px;
     border: 1px solid rgba(255,79,154,.6);
     border-radius: 20px;
@@ -364,7 +501,10 @@ section {
     margin-top: 35px;
 }
 
-/* FINAL */
+
+/* =========================
+   FINAL
+========================= */
 
 .final {
     min-height: 100vh;
@@ -373,7 +513,7 @@ section {
 }
 
 .final-photo {
-    width: min(300px, 75vw);
+    width: min(300px,75vw);
     height: 380px;
     object-fit: cover;
     border-radius: 20px;
@@ -382,7 +522,7 @@ section {
 }
 
 .final h2 {
-    font-size: clamp(32px, 8vw, 60px);
+    font-size: clamp(32px,8vw,60px);
     margin-bottom: 40px;
 }
 
@@ -415,7 +555,10 @@ section {
     min-height: 40px;
 }
 
-/* ESTRELLAS ROSAS */
+
+/* =========================
+   ESTRELLAS ROSAS
+========================= */
 
 .pink-star {
     position: fixed;
@@ -438,7 +581,10 @@ section {
     }
 }
 
-/* APARICIÓN AL HACER SCROLL */
+
+/* =========================
+   APARICIÓN AL HACER SCROLL
+========================= */
 
 .reveal {
     opacity: 0;
@@ -451,9 +597,12 @@ section {
     transform: translateY(0);
 }
 
-/* MÓVIL */
 
-@media (max-width: 600px) {
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width:600px) {
 
     section {
         padding: 80px 15px;
@@ -490,6 +639,40 @@ section {
 
 <body>
 
+<!-- =========================
+     DESBLOQUEO
+========================= -->
+
+<div id="lockScreen">
+
+    <div class="lockBox">
+
+        <div class="lockStar">✦</div>
+
+        <h1>Antes de entrar...</h1>
+
+        <p>Hay una frase que tenés que saber.</p>
+
+        <input
+            type="text"
+            id="passwordInput"
+            placeholder="Escribila acá..."
+            autocomplete="off"
+        >
+
+        <button class="lockButton" onclick="unlockPage()">
+            Entrar
+        </button>
+
+        <div id="errorMessage"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ESTRELLAS -->
+
 <div class="stars" id="stars"></div>
 
 
@@ -501,8 +684,10 @@ section {
 
     <p>Hice algo para vos.</p>
 
-    <button class="start"
-    onclick="document.getElementById('portada').scrollIntoView()">
+    <button
+        class="start"
+        onclick="document.getElementById('portada').scrollIntoView()"
+    >
         Empezar
     </button>
 
@@ -516,9 +701,10 @@ section {
     <div class="content reveal">
 
         <img
-        src="f622918f11a5c896288b2b385ab0b9f6.jpg"
-        class="cover-photo"
-        alt="Foto">
+            src="f622918f11a5c896288b2b385ab0b9f6.jpg"
+            class="cover-photo"
+            alt="Foto"
+        >
 
         <div class="cover-title">
             Para vos, Illary.
@@ -536,9 +722,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="1b255a5634d63da3ab9ac7287aac64df.jpg"
-        class="photo"
-        onclick="openModal(`habia un lugar en tu cama y me volví un okupa,sol en la ventana y hiciste de lupa,no se de quién es la culpa`)">
+            src="1b255a5634d63da3ab9ac7287aac64df.jpg"
+            class="photo"
+            onclick="openModal('FRASE 1')"
+            alt="Foto"
+        >
 
         <div class="photo-label">01</div>
         <div class="tap">tocá la foto</div>
@@ -555,9 +743,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="363b16f303895f756adc0fa99d9a0c75.jpg"
-        class="photo"
-        onclick="openModal(`mamichula,por vos me hago bueno me hago malo,por vos pierdo por vos gano,mami en esa estamos`)">
+            src="363b16f303895f756adc0fa99d9a0c75.jpg"
+            class="photo"
+            onclick="openModal('FRASE 2')"
+            alt="Foto"
+        >
 
         <div class="photo-label">02</div>
         <div class="tap">tocá la foto</div>
@@ -574,9 +764,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="56d91b64396c600ec6c9efbe90b88a01.jpg"
-        class="photo"
-        onclick="openModal(`te hice reír tanto para matar el enojo`)">
+            src="56d91b64396c600ec6c9efbe90b88a01.jpg"
+            class="photo"
+            onclick="openModal('FRASE 3')"
+            alt="Foto"
+        >
 
         <div class="photo-label">03</div>
         <div class="tap">tocá la foto</div>
@@ -593,9 +785,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="60c705fb487bfca4e3aeb782b330ed18.jpg"
-        class="photo"
-        onclick="openModal(`tal vez el tiempo,sepa que siento,cuando me hablas,y me contás tu día-cuando se lleno la luna,vi tu rostro en una estrella`)">
+            src="60c705fb487bfca4e3aeb782b330ed18.jpg"
+            class="photo"
+            onclick="openModal('FRASE 4')"
+            alt="Foto"
+        >
 
         <div class="photo-label">04</div>
         <div class="tap">tocá la foto</div>
@@ -612,9 +806,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="649d25c24161444ca82fa00f603ba63d.jpg"
-        class="photo"
-        onclick="openModal(`sin vos ya no hay luz sos mi eclipse solar`)">
+            src="649d25c24161444ca82fa00f603ba63d.jpg"
+            class="photo"
+            onclick="openModal('FRASE 5')"
+            alt="Foto"
+        >
 
         <div class="photo-label">05</div>
         <div class="tap">tocá la foto</div>
@@ -631,9 +827,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="7147ea7aced17349de4901a43cf0abcc.jpg"
-        class="photo"
-        onclick="openModal(`y esperando por ver si saliera la luna,déjate querer,dímelo otra vez,un día con una noche oscura,si te vas,me quedo en esta calle sin salida`)">
+            src="7147ea7aced17349de4901a43cf0abcc.jpg"
+            class="photo"
+            onclick="openModal('FRASE 6')"
+            alt="Foto"
+        >
 
         <div class="photo-label">06</div>
         <div class="tap">tocá la foto</div>
@@ -650,9 +848,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="9570201a38992657cedc0153880252b1.jpg"
-        class="photo"
-        onclick="openModal(`se apaga el sol cuando te encuentro en el amanecer,justo cuando el tiempo empieza a desaparecer,mami aunque lo intentes no nos van a ver caer,todo Extremadura sabe que te vengo a ver`)">
+            src="9570201a38992657cedc0153880252b1.jpg"
+            class="photo"
+            onclick="openModal('FRASE 7')"
+            alt="Foto"
+        >
 
         <div class="photo-label">07</div>
         <div class="tap">tocá la foto</div>
@@ -669,9 +869,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="ab9fcbdf353badab29ab01ae72440ccb.jpg"
-        class="photo"
-        onclick="openModal(`no voy a compartirla con nadie,puta saltame que me quedo solo y no quiero quedarme sin aire,quiero quedarme sin nadie,con tu culo encima de mi carne ¿Cuanto loco como yo? A cuánta les encanta mi flow? ¿Cuánta como vos?`)">
+            src="ab9fcbdf353badab29ab01ae72440ccb.jpg"
+            class="photo"
+            onclick="openModal('FRASE 8')"
+            alt="Foto"
+        >
 
         <div class="photo-label">08</div>
         <div class="tap">tocá la foto</div>
@@ -688,9 +890,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="ba2a72cebaf0f5fc12d508f6e92a17d8.jpg"
-        class="photo"
-        onclick="openModal(`porque no puedo vivir,mucho menos si es sin ti,sos esa curita de amor si la herida me sangra,si te cuesta ser feliz,solamente ven a mí`)">
+            src="ba2a72cebaf0f5fc12d508f6e92a17d8.jpg"
+            class="photo"
+            onclick="openModal('FRASE 9')"
+            alt="Foto"
+        >
 
         <div class="photo-label">09</div>
         <div class="tap">tocá la foto</div>
@@ -707,9 +911,11 @@ section {
     <div class="photo-wrapper reveal">
 
         <img
-        src="c70a1645e29b5e7d9ddbd6d45f8f51c3.jpg"
-        class="photo"
-        onclick="openModal(`i can only see your face,when i close my eyes`)">
+            src="c70a1645e29b5e7d9ddbd6d45f8f51c3.jpg"
+            class="photo"
+            onclick="openModal('I can only see your face, when I close my eyes')"
+            alt="Foto"
+        >
 
         <div class="photo-label">10</div>
         <div class="tap">tocá la foto</div>
@@ -727,15 +933,17 @@ section {
 
         <h2>Ahora escuchá esto.</h2>
 
-        <p>Porque obviamente una página así necesitaba una canción.</p>
+        <p>
+            Porque obviamente una página así necesitaba una canción.
+        </p>
 
         <div class="video">
 
             <iframe
-            src="https://www.youtube.com/embed/dKVYuxTTmmA"
-            title="YouTube"
-            allow="autoplay; encrypted-media"
-            allowfullscreen>
+                src="https://www.youtube.com/embed/dKVYuxTTmmA"
+                title="YouTube"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
             </iframe>
 
         </div>
@@ -754,31 +962,31 @@ section {
         <h2>Una carta</h2>
 
         <p>
-        illary,si illary no ary ni 3ry,no se en que momento empezaste a llamarme la atención,no sé en qué momento empecé a darme cuenta que eras mucho más que una cuenta de Instagram con la que coincidía en grupos,siempre me caíste bien,eso sí me acuerdo.
+            illary,si illary no ary ni 3ry,no se en que momento empezaste a llamarme la atención,no sé en qué momento empecé a darme cuenta que eras mucho más que una cuenta de Instagram con la que coincidía en grupos,siempre me caíste bien,eso sí me acuerdo.
         </p>
 
         <p>
-        Pero que importa de lo que me acuerde?Teniendo en cuenta que mi memoria es una mierda capaz no me acuerde ni de mandarte esto,espero que no,lo que realmente importa es de lo que nos acordaremos en el futuro,nos acordaremos de que fue todo mal?capaz nos acordamos de la linda relación que tuvimos,o de como nunca llegamos a nada,de acabar bien,o mal,eso es algo que nunca sabremos hasta que pase,no?
+            Pero que importa de lo que me acuerde?Teniendo en cuenta que mi memoria es una mirada capaz no me acuerde ni de mandarte esto,espero que no,lo que realmente importa es de lo que nos acordaremos en el futuro,nos acordaremos de que fue todo mal?capaz nos acordamos de la linda relación que tuvimos,o de como nunca llegamos a nada,de acabar bien,o mal,eso es algo que nunca sabremos hasta que pase,no?
         </p>
 
         <p>
-        Pero esto no es para ponerme filosófico,solo quería decirte lo mucho que te quiero,si ya se que lo sabes,si tal vez queda demasiado cliché decirlo en una carta.
+            Pero esto no es para ponerme filosófico,solo quería decirte lo mucho que te quiero,si ya se que lo sabes,si tal vez queda demasiado cliché decirlo en una carta.
         </p>
 
         <p>
-        Pero que querés que haga si es verdad,conseguiste volver a hacer llamad mi atención después de 1 año sin sentir nada por nadie,y será una boludez pero yo te lo agradeceré eternamente.
+            Pero que querés que haga si es verdad,conseguiste volver a hacer llamad mi atención después de 1 año sin sentir nada por nadie,y será una boludez pero yo te lo agradeceré eternamente.
         </p>
 
         <p>
-        Tampoco voy a decir nada que ya no sepas,me gustas,corte me gustas de verdad,no quiero decirlo solo por que es lo que se dicen en estos casos,me gustas mucho illary,me gusta cuando te haces la dura,cuando me hablas de lo que te gusta,cuando te enojas,cuando estas triste,cuando te pones sentimental(pocas veces por no decir ninguna)- y no se si yo te gusto igual,pero tampoco necesito saberlo pq esto no va a cambiar,y bueno no me entra más pq aunque haya creado yo entera la web tampoco puedo hacerlo eterno jajjajaja.
+            Tampoco voy a decir nada que ya no sepas,me gustas,corte me gustas de verdad,no quiero decirlo solo por que es lo que se dicen en estos casos,me gustas mucho illary,me gusta cuando te haces la dura,cuando me hablas de lo que te gusta,cuando te enojas,cuando estas triste,cuando te pones sentimental(pocas veces por no decir ninguna)- y no se si yo te gusto igual,pero tampoco necesito saberlo pq esto no va a cambiar,y bueno no me entra más pq aunque haya creado yo entera la web tampoco puedo hacerlo eterno jajjajaja.
         </p>
 
         <p>
-        te amo illary,por siempre.
+            te amo illary,por siempre.
         </p>
 
         <p class="signature">
-        — Ismael ♡
+            — Ismael ♡
         </p>
 
     </div>
@@ -791,12 +999,13 @@ section {
 <section class="final">
 
     <img
-    src="ed0ccaa49a0bc7ab68252d9bb19279c9.jpg"
-    class="final-photo reveal"
-    alt="Foto">
+        src="ed0ccaa49a0bc7ab68252d9bb19279c9.jpg"
+        class="final-photo reveal"
+        alt="Foto"
+    >
 
     <h2 class="reveal">
-        Y no la hago mas larga...         Queres ser mi novia
+        Tengo una última pregunta...
     </h2>
 
     <div class="buttons reveal">
@@ -835,7 +1044,61 @@ section {
 
 <script>
 
-/* CREAR ESTRELLAS */
+/* =========================
+   DESBLOQUEO
+========================= */
+
+const correctPassword = "sos mi estrella";
+
+function unlockPage() {
+
+    const input = document
+        .getElementById("passwordInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const error = document.getElementById("errorMessage");
+
+    if (input === correctPassword) {
+
+        error.textContent = "";
+
+        document
+            .getElementById("lockScreen")
+            .classList.add("hidden");
+
+        createPinkStars();
+
+        setTimeout(() => {
+
+            document
+                .getElementById("lockScreen")
+                .remove();
+
+        }, 1400);
+
+    } else {
+
+        error.textContent = "Nope... probá de nuevo 👀";
+
+    }
+}
+
+document
+    .getElementById("passwordInput")
+    .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            unlockPage();
+        }
+
+    });
+
+
+/* =========================
+   CREAR ESTRELLAS
+========================= */
 
 const stars = document.getElementById("stars");
 
@@ -859,7 +1122,9 @@ for(let i = 0; i < 180; i++){
 }
 
 
-/* APARECER AL HACER SCROLL */
+/* =========================
+   APARECER AL HACER SCROLL
+========================= */
 
 const reveals = document.querySelectorAll(".reveal");
 
@@ -868,7 +1133,9 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
 
         if(entry.isIntersecting){
+
             entry.target.classList.add("show");
+
         }
 
     });
@@ -880,7 +1147,9 @@ const observer = new IntersectionObserver((entries) => {
 reveals.forEach(element => observer.observe(element));
 
 
-/* ABRIR FRASE */
+/* =========================
+   ABRIR FRASE
+========================= */
 
 function openModal(text){
 
@@ -891,7 +1160,9 @@ function openModal(text){
 }
 
 
-/* CERRAR FRASE */
+/* =========================
+   CERRAR FRASE
+========================= */
 
 function closeModal(){
 
@@ -900,51 +1171,68 @@ function closeModal(){
 }
 
 
-/* RESPUESTA SÍ */
+/* =========================
+   RESPUESTA SÍ
+========================= */
 
 function yesAnswer(){
 
-    const message = document.getElementById("finalMessage");
+    const message =
+        document.getElementById("finalMessage");
 
-    message.textContent = "gracias novia,te quiero mucho.";
+    message.textContent =
+        "gracias novia,te quiero mucho.";
 
     createPinkStars();
 
 }
 
 
-/* RESPUESTA NO */
+/* =========================
+   RESPUESTA NO
+========================= */
 
 function noAnswer(){
 
-    const message = document.getElementById("finalMessage");
+    const message =
+        document.getElementById("finalMessage");
 
-    message.textContent = "uuuhh mal ahí wacho,ánimos";
+    message.textContent =
+        "uuuhh mal ahí wacho,ánimos";
 
 }
 
 
-/* ESTRELLAS ROSAS */
+/* =========================
+   ESTRELLAS ROSAS
+========================= */
 
 function createPinkStars(){
 
     for(let i = 0; i < 55; i++){
 
-        const star = document.createElement("div");
+        const star =
+            document.createElement("div");
 
         star.className = "pink-star";
 
         star.textContent = "★";
 
-        star.style.left = Math.random() * 100 + "vw";
-        star.style.top = (55 + Math.random() * 35) + "vh";
+        star.style.left =
+            Math.random() * 100 + "vw";
 
-        star.style.animationDelay = Math.random() * .8 + "s";
+        star.style.top =
+            (55 + Math.random() * 35) + "vh";
+
+        star.style.animationDelay =
+            Math.random() * .8 + "s";
 
         document.body.appendChild(star);
 
         setTimeout(() => {
+
             star.remove();
+
         }, 2500);
 
     }
@@ -954,4 +1242,4 @@ function createPinkStars(){
 </script>
 
 </body>
-    </html>
+</html>
